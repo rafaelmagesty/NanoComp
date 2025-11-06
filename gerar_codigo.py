@@ -172,12 +172,6 @@ def gerar_codigo(modelo: str, tipo: str, nivel: str, circuito: str, saida: str):
         print(f"Salvo em: {arquivo_saida.absolute()}")
         print(f"{'='*70}\n")
         
-        # Mostra o código gerado
-        print("CÓDIGO R GERADO:")
-        print("-" * 70)
-        print(codigo_gerado)
-        print("-" * 70)
-        
         return codigo_gerado
         
     except FileNotFoundError as e:

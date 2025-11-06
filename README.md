@@ -27,14 +27,39 @@ Prompts com instruções detalhadas passo a passo:
 - `tipo3_passoapasso_medio_ativacao.txt`
 - `tipo3_passoapasso_dificil_perceptron.txt`
 
-## Como Testar
+## Como Usar
 
 ### Pré-requisitos
 - Python 3.7+
 - Ollama instalado e rodando
 - Modelo LLM configurado no Ollama (ex: llama3)
+- Biblioteca `ollama` instalada: `pip install ollama`
 
-### Teste Rápido
+### Uso Principal (Recomendado)
+
+O script `gerar_codigo.py` permite escolher modelo, tipo de prompt e salvar resultado em CSV:
+
+```bash
+# Forma completa
+python gerar_codigo.py --modelo llama3 --tipo tipo1_codigo --nivel facil --circuito adicao --saida resultado.csv
+
+# Forma abreviada
+python gerar_codigo.py -m llama3 -t tipo1_codigo -n facil -c adicao -s resultado.csv
+
+# Exemplos com diferentes tipos
+python gerar_codigo.py -m llama3 -t tipo2_documentacao -n medio -c multiplicacao -s mult.csv
+python gerar_codigo.py -m llama3 -t tipo3_passoapasso -n dificil -c perceptron -s perceptron.csv
+```
+
+### Parâmetros do Script
+
+- `-m, --modelo`: Modelo Ollama (padrão: llama3)
+- `-t, --tipo`: Tipo de prompt (tipo1_codigo, tipo2_documentacao, tipo3_passoapasso)
+- `-n, --nivel`: Nível de dificuldade (facil, medio, dificil)
+- `-c, --circuito`: Tipo de circuito (adicao, multiplicacao, ativacao, perceptron)
+- `-s, --saida`: Nome do arquivo CSV de saída (obrigatório)
+
+### Teste Rápido (Scripts Antigos)
 
 ```bash
 # Teste um prompt específico
@@ -42,6 +67,9 @@ python test_prompt.py tipo1_codigo facil adicao
 
 # Ou execute todos os exemplos
 python test_prompt.py
+
+# Exemplo simples
+python exemplo_simples.py
 ```
 
 ### Uso Programático

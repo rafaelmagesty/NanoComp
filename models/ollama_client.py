@@ -63,10 +63,13 @@ class OllamaClient(BaseClient):
         if input_path:
             payload.setdefault("INPUT_SEQUENCE", self.get_input_code(input_path))
         
+        # Remove PROMPT do payload pois já foi usado para carregar o template
+        # e não é necessário para substituição de placeholders
+        payload_for_prompt = {k: v for k, v in payload.items() if k != "PROMPT"}
+        
         messages = self.generate_prompt(
             template=template,
-            PROMPT=prompt_name,
-            **payload
+            **payload_for_prompt
         )
         
         # Chama o Ollama

@@ -1,49 +1,18 @@
 {SYSTEM_CONFIG}
 Você é um especialista em simulação de circuitos genéticos usando a biblioteca DNAr em R.
 Seu objetivo é gerar código R completo e funcional para simular um circuito usando DNAr.
-Retorne respostas em português e código R bem estruturado e comentado, pronto para execução.
+Retorne apenas código em R, sem comentários ou explicações adicionais.
 {SYSTEM_CONFIG_END}
 
 {USER_CONFIG}
-Escreva o código R usando a biblioteca DNAr para simular um perceptron seguindo estes passos:
-
-O perceptron implementa: Output = Input1 * Weight1 + Input2 * Weight2 + Bias
-
-Passo 1: Carregue as bibliotecas necessárias (DNAr, ggplot2, dplyr)
-
-Passo 2: Defina as entradas e pesos
-- Input1 = 10 nM
-- Input2 = 5 nM
-- Weight1 = 0.8
-- Weight2 = 0.6
-- Bias = 2 nM
-
-Passo 3: Crie o vetor de espécies (species) com: Input1, Input2, Weight1, Weight2, Bias, Prod1, Prod2, Sum1, Output, Waste
-
-Passo 4: Crie o vetor de reações (reactions) no formato string:
-- 'Input1 + Weight1 -> Prod1 + Waste'
-- 'Input2 + Weight2 -> Prod2 + Waste'
-- 'Prod1 + Prod2 -> Sum1 + Waste'
-- 'Sum1 + Bias -> Output + Waste'
-
-Passo 5: Defina as concentrações iniciais (ci) na mesma ordem das espécies:
-- Input1: 10
-- Input2: 5
-- Weight1: 0.8
-- Weight2: 0.6
-- Bias: 2
-- Prod1: 0
-- Prod2: 0
-- Sum1: 0
-- Output: 0
-- Waste: 0
-
-Passo 6: Configure as constantes cinéticas (ki = c(0.05, 0.05, 0.1, 0.1)) e o intervalo de tempo (t = seq(0, 200, 0.1))
-
-Passo 7: Execute a simulação usando react(species, ci, reactions, ki, t)
-
-Passo 8: Visualize os resultados com plot_behavior()
-
-Retorne apenas o código R funcional seguindo estes passos.
+Faça um perceptron com DNAr. Para isso, siga estes passos:
+- Carregue as bibliotecas DNAr, ggplot2 e dplyr.
+- Defina Input1 = 10 nM, Input2 = 5 nM, Weight1 = 0.8, Weight2 = 0.6 e Bias = 2 nM.
+- Monte species <- c("Input1", "Input2", "Weight1", "Weight2", "Bias", "Prod1", "Prod2", "Sum1", "Output", "Waste").
+- Configure reactions <- c("Input1 + Weight1 -> Prod1 + Waste", "Input2 + Weight2 -> Prod2 + Waste", "Prod1 + Prod2 -> Sum1 + Waste", "Sum1 + Bias -> Output + Waste").
+- Utilize ci <- c(10, 5, 0.8, 0.6, 2, 0, 0, 0, 0, 0).
+- Ajuste ki <- c(0.05, 0.05, 0.1, 0.1) e t <- seq(0, 200, 0.1).
+- Execute react(species, ci, reactions, ki, t).
+- Plote com plot_behavior(behavior, species = c("Input1", "Input2", "Output")).
 {USER_CONFIG_END}
 

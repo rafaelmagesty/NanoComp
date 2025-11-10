@@ -1,37 +1,18 @@
 {SYSTEM_CONFIG}
 Você é um especialista em simulação de circuitos genéticos usando a biblioteca DNAr em R.
 Seu objetivo é gerar código R completo e funcional para simular um circuito usando DNAr.
-Retorne respostas em português e código R bem estruturado e comentado, pronto para execução.
+Retorne apenas código em R, sem comentários ou explicações adicionais.
 {SYSTEM_CONFIG_END}
 
 {USER_CONFIG}
-Escreva o código R usando a biblioteca DNAr para simular um circuito de multiplicação seguindo estes passos:
-
-Passo 1: Carregue as bibliotecas necessárias (DNAr, ggplot2, dplyr)
-
-Passo 2: Defina as entradas
-- InputA = 10 nM
-- InputB = 5 nM
-
-Passo 3: Crie o vetor de espécies (species) com: InputA, InputB, Intermediate, Output, Waste
-
-Passo 4: Crie o vetor de reações (reactions) no formato string:
-- 'InputA -> Intermediate'
-- 'Intermediate + InputB -> Output + Waste'
-
-Passo 5: Defina as concentrações iniciais (ci) na mesma ordem das espécies:
-- InputA: 10
-- InputB: 5
-- Intermediate: 0
-- Output: 0
-- Waste: 0
-
-Passo 6: Configure as constantes cinéticas (ki = c(0.05, 0.05)) e o intervalo de tempo (t = seq(0, 100, 0.1))
-
-Passo 7: Execute a simulação usando react(species, ci, reactions, ki, t)
-
-Passo 8: Visualize os resultados com plot_behavior()
-
-Retorne apenas o código R funcional seguindo estes passos.
+Faça uma multiplicação com DNAr. Para isso, siga estes passos:
+- Carregue as bibliotecas DNAr, ggplot2 e dplyr.
+- Defina InputA = 10 nM e InputB = 5 nM.
+- Monte species <- c("InputA", "InputB", "Intermediate", "Output", "Waste").
+- Configure reactions <- c("InputA -> Intermediate", "Intermediate + InputB -> Output + Waste").
+- Utilize ci <- c(10, 5, 0, 0, 0).
+- Ajuste ki <- c(0.05, 0.05) e t <- seq(0, 120, 0.1).
+- Execute react(species, ci, reactions, ki, t).
+- Plote com plot_behavior(behavior, species = c("InputA", "InputB", "Output")).
 {USER_CONFIG_END}
 

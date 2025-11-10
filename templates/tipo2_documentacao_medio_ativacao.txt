@@ -1,94 +1,43 @@
 {SYSTEM_CONFIG}
 Você é um especialista em simulação de circuitos genéticos usando a biblioteca DNAr em R.
 Seu objetivo é gerar código R completo e funcional para simular um circuito usando DNAr.
-Retorne respostas em português e código R bem estruturado e comentado, pronto para execução.
+Retorne apenas código em R, sem comentários ou explicações adicionais.
 {SYSTEM_CONFIG_END}
 
 {USER_CONFIG}
-Escreva o código R usando a biblioteca DNAr para simular um circuito de função de ativação (sigmóide).
-
-O circuito deve implementar uma função de ativação sigmóide: Output = 1 / (1 + exp(-Input))
-
-Condições:
-- Input = 10 nM
-- Constantes cinéticas: k = 0.1
-
-Documentação da biblioteca DNAr (https://github.com/DanielKneipp/DNAr):
-
-FUNÇÕES PRINCIPAIS:
-
-1. react(species, ci, reactions, ki, t)
-   Simula uma Rede de Reações Químicas (CRN) formal.
-   
-   Parâmetros:
-   - species: vetor de strings com os nomes de todas as espécies químicas
-   - ci: vetor numérico com as concentrações iniciais (mesma ordem de species)
-   - reactions: vetor de strings com as reações no formato 'A -> B' ou 'A + B -> C + Waste'
-   - ki: vetor numérico com as constantes cinéticas para cada reação
-   - t: vetor numérico com os intervalos de tempo para a simulação
-   
-   Retorna: data.frame com o comportamento temporal de todas as espécies
-
-2. react_4domain(species, ci, reactions, ki, t, cmax, qmax, alpha, beta)
-   Simula uma CRN baseada em DNA usando o modelo de 4 domínios.
-   
-   Parâmetros adicionais:
-   - cmax: concentração máxima para normalização
-   - qmax: taxa máxima para normalização
-   - alpha: parâmetro de escala (padrão: 1)
-   - beta: parâmetro de escala (padrão: 1)
-   
-   Retorna: lista com 'behavior' (data.frame) e 'dsd' (código Visual DSD)
-
-3. plot_behavior(behavior, species=None, x_label="Time", y_label="Concentration", legend_name="Species")
-   Visualiza o comportamento das espécies ao longo do tempo.
-   
-   Parâmetros:
-   - behavior: data.frame retornado por react() ou react_4domain()$behavior
-   - species: vetor de strings com nomes das espécies a plotar (opcional)
-   - x_label, y_label, legend_name: labels para o gráfico
-
-EXEMPLO BÁSICO:
-
+Faça uma função de ativação sigmoide com DNAr. Para isso, use a documentação: https://github.com/DanielKneipp/DNAr.
+Aqui está um exemplo de código que faz uma adição em DNAr:
 library(DNAr)
 library(ggplot2)
 library(dplyr)
-
-# Definir espécies
-species <- c("InputA", "InputB", "Output", "Waste")
-
-# Definir reações
-reactions <- c("InputA + InputB -> Output + Waste")
-
-# Concentrações iniciais
-ci <- c(10, 5, 0, 0)  # InputA=10, InputB=5, Output=0, Waste=0
-
-# Constantes cinéticas
-ki <- c(0.1)
-
-# Intervalo de tempo
-t <- seq(0, 100, 0.1)
-
-# Executar simulação
-result <- react(species, ci, reactions, ki, t)
-
-# Visualizar
-plot_behavior(result, species = c("InputA", "InputB", "Output"))
-
-FORMATO DE REAÇÕES:
-- Reação simples: 'A -> B'
-- Reação com múltiplos reagentes: 'A + B -> C'
-- Reação com múltiplos produtos: 'A -> B + C + Waste'
-- Reação completa: 'A + B -> C + D + Waste'
-
-NOTAS IMPORTANTES:
-- Todas as espécies devem estar definidas no vetor 'species'
-- O vetor 'ci' deve ter o mesmo tamanho e ordem de 'species'
-- O vetor 'ki' deve ter o mesmo tamanho de 'reactions'
-- Use 'Waste' para espécies que são resíduos da reação
-
-Use a documentação acima como referência para implementar o código corretamente.
-
-Retorne apenas o código R funcional.
+InputA <- 3
+InputB <- 2
+InputF <- 20
+ID <- 0
+concentracoesIniciais <- c(InputA, InputB, 0, 0)
+especies <- c('A','B','C','Waste')
+reacoes <- c('A -> A + C',
+             'B -> B + C',
+             'C -> Waste')
+b <- react(
+  species = especies,
+  ci = concentracoesIniciais,
+  reactions = reacoes,
+  ki = rep(2.8e-3, 3),
+  t = seq(0, 1.6e3, length.out = 50)
+)
+b <- b %>%
+  mutate(time = time / 3600)
+p <- plot_behavior(
+  b,
+  x_label     = 'Time (h)',
+  y_label     = 'Concentration (nmol/L)',
+  legend_name = 'Species',
+  geom_list   = c('line', 'point'),
+  species = c('A','B','C')
+)
+cat('Behaviour:\n')
+print(b)
+print(p)
 {USER_CONFIG_END}
 

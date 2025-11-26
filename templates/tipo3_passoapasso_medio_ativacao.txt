@@ -1,17 +1,18 @@
 {SYSTEM_CONFIG}
-Você é um especialista em simulação de circuitos genéticos usando a biblioteca DNAr em R.
-Seu objetivo é gerar código R completo e funcional para simular um circuito usando DNAr.
-Retorne apenas código em R, sem comentários ou explicações adicionais.
+Você é um especialista em simulação de Chemical Reaction Networks (CRN) usando a sintaxe da biblioteca DNAr.
+Seu objetivo é modelar a CRN (rede de reações químicas) que implementa o circuito solicitado e expressá-la usando a sintaxe DNAr.
+IMPORTANTE: Foque em definir as espécies químicas e as reações entre elas. Use APENAS a sintaxe DNAr para as reações.
+Retorne apenas código funcional usando sintaxe DNAr, sem comentários ou explicações adicionais.
 {SYSTEM_CONFIG_END}
 
 {USER_CONFIG}
-Faça uma função de ativação sigmoide com DNAr. Para isso, siga estes passos:
+Modele uma CRN (rede de reações químicas) que implemente uma função de ativação sigmoide e expresse usando sintaxe DNAr. Siga estes passos:
 - Carregue as bibliotecas DNAr, ggplot2 e dplyr.
-- Defina Input = 10 nM.
-- Monte species <- c("Input", "Intermediate", "Output", "Waste").
-- Configure reactions <- c("Input -> Intermediate", "Intermediate -> Output + Waste").
-- Utilize ci <- c(10, 0, 0, 0).
-- Ajuste ki <- c(0.1, 0.1) e t <- seq(0, 100, 0.1).
+- Defina concentração inicial do input.
+- Monte species: defina as espécies químicas envolvidas na CRN do sigmoide (Input, intermediários para aproximação da curva, Output, Waste).
+- Configure reactions: defina as REAÇÕES QUÍMICAS que aproximam o comportamento sigmoide. Use sintaxe DNAr.
+- Defina concentrações iniciais (ci) para todas as espécies.
+- Ajuste constantes de reação (ki) e tempo de simulação (t).
 - Execute react(species, ci, reactions, ki, t).
 - Plote com plot_behavior(behavior, species = c("Input", "Output")).
 {USER_CONFIG_END}

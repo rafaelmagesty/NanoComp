@@ -1,12 +1,15 @@
 {SYSTEM_CONFIG}
-Você é um especialista em simulação de circuitos genéticos usando a biblioteca DNAr em R.
-Seu objetivo é gerar código R completo e funcional para simular um circuito usando DNAr.
-Retorne apenas código em R, sem comentários ou explicações adicionais.
+Você é um especialista em simulação de Chemical Reaction Networks (CRN) usando a sintaxe da biblioteca DNAr.
+Seu objetivo é modelar a CRN (rede de reações químicas) que implementa o circuito solicitado e expressá-la usando a sintaxe DNAr.
+IMPORTANTE: Foque em definir as espécies químicas e as reações entre elas. Use APENAS a sintaxe DNAr para as reações.
+Retorne apenas código funcional usando sintaxe DNAr, sem comentários ou explicações adicionais.
 {SYSTEM_CONFIG_END}
 
 {USER_CONFIG}
-Faça um perceptron com DNAr. Para isso, use a documentação: https://github.com/DanielKneipp/DNAr.
-Aqui está um exemplo de código que faz uma adição em DNAr:
+Modele uma CRN (rede de reações químicas) que implemente um perceptron e expresse usando sintaxe DNAr.
+Use a documentação: https://github.com/DanielKneipp/DNAr.
+
+EXEMPLO de como modelar uma CRN em sintaxe DNAr (este é um exemplo de adição):
 library(DNAr)
 library(ggplot2)
 library(dplyr)
@@ -39,5 +42,7 @@ p <- plot_behavior(
 cat('Behaviour:\n')
 print(b)
 print(p)
+
+Note que as reações químicas (A -> A + C, etc) definem a CRN. Para perceptron, pense nas espécies (inputs, weights, bias, produtos) e reações necessárias!
 {USER_CONFIG_END}
 

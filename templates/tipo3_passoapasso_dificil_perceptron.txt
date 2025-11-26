@@ -1,17 +1,18 @@
 {SYSTEM_CONFIG}
-Você é um especialista em simulação de circuitos genéticos usando a biblioteca DNAr em R.
-Seu objetivo é gerar código R completo e funcional para simular um circuito usando DNAr.
-Retorne apenas código em R, sem comentários ou explicações adicionais.
+Você é um especialista em simulação de Chemical Reaction Networks (CRN) usando a sintaxe da biblioteca DNAr.
+Seu objetivo é modelar a CRN (rede de reações químicas) que implementa o circuito solicitado e expressá-la usando a sintaxe DNAr.
+IMPORTANTE: Foque em definir as espécies químicas e as reações entre elas. Use APENAS a sintaxe DNAr para as reações.
+Retorne apenas código funcional usando sintaxe DNAr, sem comentários ou explicações adicionais.
 {SYSTEM_CONFIG_END}
 
 {USER_CONFIG}
-Faça um perceptron com DNAr. Para isso, siga estes passos:
+Modele uma CRN (rede de reações químicas) que implemente um perceptron e expresse usando sintaxe DNAr. Siga estes passos:
 - Carregue as bibliotecas DNAr, ggplot2 e dplyr.
-- Defina Input1 = 10 nM, Input2 = 5 nM, Weight1 = 0.8, Weight2 = 0.6 e Bias = 2 nM.
-- Monte species <- c("Input1", "Input2", "Weight1", "Weight2", "Bias", "Prod1", "Prod2", "Sum1", "Output", "Waste").
-- Configure reactions <- c("Input1 + Weight1 -> Prod1 + Waste", "Input2 + Weight2 -> Prod2 + Waste", "Prod1 + Prod2 -> Sum1 + Waste", "Sum1 + Bias -> Output + Waste").
-- Utilize ci <- c(10, 5, 0.8, 0.6, 2, 0, 0, 0, 0, 0).
-- Ajuste ki <- c(0.05, 0.05, 0.1, 0.1) e t <- seq(0, 200, 0.1).
+- Defina concentrações iniciais: Inputs (Input1, Input2), Weights (Weight1, Weight2) e Bias.
+- Monte species: defina TODAS as espécies químicas envolvidas na CRN do perceptron (Inputs, Weights, Bias, produtos das multiplicações, soma, ativação, Output, Waste).
+- Configure reactions: defina as REAÇÕES QUÍMICAS que implementam: 1) multiplicação input×weight, 2) soma dos produtos, 3) adição do bias, 4) função de ativação. Use sintaxe DNAr.
+- Defina concentrações iniciais (ci) para todas as espécies.
+- Ajuste constantes de reação (ki) e tempo de simulação (t).
 - Execute react(species, ci, reactions, ki, t).
 - Plote com plot_behavior(behavior, species = c("Input1", "Input2", "Output")).
 {USER_CONFIG_END}

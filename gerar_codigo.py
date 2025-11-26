@@ -241,7 +241,7 @@ Circuitos disponíveis:
         '-c', '--circuito',
         type=str,
         required=True,
-        choices=['adicao', 'multiplicacao', 'ativacao', 'perceptron'],
+        choices=['adicao', 'multiplicacao', 'ativacao', 'perceptron', 'relu'],
         help='Tipo de circuito a ser simulado'
     )
     
@@ -258,7 +258,7 @@ Circuitos disponíveis:
     if args.nivel == 'facil' and args.circuito != 'adicao':
         print("⚠️  Aviso: Nível 'facil' geralmente usa circuito 'adicao'")
     
-    if args.nivel == 'medio' and args.circuito not in ['multiplicacao', 'ativacao']:
+    if args.nivel == 'medio' and args.circuito not in ['multiplicacao', 'ativacao', 'relu']:
         print("⚠️  Aviso: Nível 'medio' geralmente usa 'multiplicacao' ou 'ativacao'")
     
     if args.nivel == 'dificil' and args.circuito != 'perceptron':

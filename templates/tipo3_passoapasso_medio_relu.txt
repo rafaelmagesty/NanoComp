@@ -15,6 +15,45 @@ Model a CRN (chemical reaction network) that implements a ReLU (Rectified Linear
 - Adjust reaction constants (ki) and simulation time (t).
 - Execute react(species, ci, reactions, ki, t).
 - Plot with plot_behavior(behavior, species = c("Input", "Output")).
+
+You must return only the R code with the following format:
+
+library(DNAr)  # Loading the library
+library(ggplot2)
+library(dplyr)
+InputA <- 3
+InputB <- 2
+InputF <- 20
+ID <- 0
+concentracoesIniciais <- c(InputA, InputB, 0, 0)
+especies <- c('A','B','C','Waste')
+reacoes <- c('A -> A + C', 
+             'B -> B + C',
+             'C -> Waste'
+            )
+# Simulating
+b <- react(
+  species = especies,
+  ci = concentracoesIniciais,
+  reactions = reacoes,
+  ki = rep(2.8e-3, 3),
+  t = seq(0, 1.6e3, length.out = 50)
+)
+# Rescaling seconds -> hours
+b <- b %>%
+  mutate(time = time / 3600)
+# Plot
+p <- plot_behavior(
+  b,
+  x_label     = 'Time (h)',
+  y_label     = 'Concentration (nmol/L)',
+  legend_name = 'Species',
+  geom_list   = c('line', 'point'),
+  species = c('A','B','C')
+)
+cat('Behaviour:\n')
+print(b)
+print(p)
 {USER_CONFIG_END}
 
 

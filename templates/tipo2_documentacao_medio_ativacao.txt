@@ -1,16 +1,15 @@
 {SYSTEM_CONFIG}
-Você é um especialista em simulação de Chemical Reaction Networks (CRN) usando a sintaxe da biblioteca DNAr.
-Seu objetivo é modelar a CRN (rede de reações químicas) que implementa o circuito solicitado e expressá-la usando a sintaxe DNAr.
-IMPORTANTE: Foque em definir as espécies químicas e as reações entre elas. Use APENAS a sintaxe DNAr para as reações.
-Retorne apenas código funcional usando sintaxe DNAr, sem comentários ou explicações adicionais.
+Act as biological software assistant. Your task is to create a CRN to the {o que é pra fazer}.
+
+You must return only the R code with the following format:
 {SYSTEM_CONFIG_END}
 
 {USER_CONFIG}
-Modele uma CRN (rede de reações químicas) que implemente uma função de ativação sigmoide e expresse usando sintaxe DNAr.
-Use a documentação: https://github.com/DanielKneipp/DNAr.
+Act as biological software assistant. Your task is to create a CRN to implement a sigmoid activation function.
 
-EXEMPLO de como modelar uma CRN em sintaxe DNAr (este é um exemplo de adição):
-library(DNAr)
+You must return only the R code with the following format:
+
+library(DNAr)  # Loading the library
 library(ggplot2)
 library(dplyr)
 InputA <- 3
@@ -19,9 +18,11 @@ InputF <- 20
 ID <- 0
 concentracoesIniciais <- c(InputA, InputB, 0, 0)
 especies <- c('A','B','C','Waste')
-reacoes <- c('A -> A + C',
+reacoes <- c('A -> A + C', 
              'B -> B + C',
-             'C -> Waste')
+             'C -> Waste'
+            )
+# Simulating
 b <- react(
   species = especies,
   ci = concentracoesIniciais,
@@ -29,8 +30,10 @@ b <- react(
   ki = rep(2.8e-3, 3),
   t = seq(0, 1.6e3, length.out = 50)
 )
+# Rescaling seconds -> hours
 b <- b %>%
   mutate(time = time / 3600)
+# Plot
 p <- plot_behavior(
   b,
   x_label     = 'Time (h)',
@@ -42,7 +45,4 @@ p <- plot_behavior(
 cat('Behaviour:\n')
 print(b)
 print(p)
-
-Note que as reações químicas (A -> A + C, etc) definem a CRN. Para sigmoide, pense nas espécies e reações necessárias!
 {USER_CONFIG_END}
-

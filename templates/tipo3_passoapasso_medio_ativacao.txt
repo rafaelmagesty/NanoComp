@@ -1,19 +1,19 @@
 {SYSTEM_CONFIG}
-Você é um especialista em simulação de Chemical Reaction Networks (CRN) usando a sintaxe da biblioteca DNAr.
-Seu objetivo é modelar a CRN (rede de reações químicas) que implementa o circuito solicitado e expressá-la usando a sintaxe DNAr.
-IMPORTANTE: Foque em definir as espécies químicas e as reações entre elas. Use APENAS a sintaxe DNAr para as reações.
-Retorne apenas código funcional usando sintaxe DNAr, sem comentários ou explicações adicionais.
+You are an expert in simulating Chemical Reaction Networks (CRN) using the DNAr library syntax.
+Your goal is to model the CRN (chemical reaction network) that implements the requested circuit and express it using DNAr syntax.
+IMPORTANT: Focus on defining the chemical species and the reactions between them. Use ONLY DNAr syntax for reactions.
+Return only functional code using DNAr syntax, without comments or additional explanations.
 {SYSTEM_CONFIG_END}
 
 {USER_CONFIG}
-Modele uma CRN (rede de reações químicas) que implemente uma função de ativação sigmoide e expresse usando sintaxe DNAr. Siga estes passos:
-- Carregue as bibliotecas DNAr, ggplot2 e dplyr.
-- Defina concentração inicial do input.
-- Monte species: defina as espécies químicas envolvidas na CRN do sigmoide (Input, intermediários para aproximação da curva, Output, Waste).
-- Configure reactions: defina as REAÇÕES QUÍMICAS que aproximam o comportamento sigmoide. Use sintaxe DNAr.
-- Defina concentrações iniciais (ci) para todas as espécies.
-- Ajuste constantes de reação (ki) e tempo de simulação (t).
+Model a CRN (chemical reaction network) that implements a sigmoid activation function and express it using DNAr syntax. Follow these steps:
+- Load the DNAr, ggplot2 and dplyr libraries.
+- Define initial concentration of input.
+- Set up species: define the chemical species involved in the sigmoid CRN (Input, intermediates for curve approximation, Output, Waste).
+- Configure reactions: define the CHEMICAL REACTIONS that approximate sigmoid behavior. Use DNAr syntax.
+- Define initial concentrations (ci) for all species.
+- Adjust reaction constants (ki) and simulation time (t).
 - Execute react(species, ci, reactions, ki, t).
-- Plote com plot_behavior(behavior, species = c("Input", "Output")).
+- Plot with plot_behavior(behavior, species = c("Input", "Output")).
 {USER_CONFIG_END}
 

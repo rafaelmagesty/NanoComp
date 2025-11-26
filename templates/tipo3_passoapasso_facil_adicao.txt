@@ -1,19 +1,19 @@
 {SYSTEM_CONFIG}
-Você é um especialista em simulação de Chemical Reaction Networks (CRN) usando a sintaxe da biblioteca DNAr.
-Seu objetivo é modelar a CRN (rede de reações químicas) que implementa o circuito solicitado e expressá-la usando a sintaxe DNAr.
-IMPORTANTE: Foque em definir as espécies químicas e as reações entre elas. Use APENAS a sintaxe DNAr para as reações.
-Retorne apenas código funcional usando sintaxe DNAr, sem comentários ou explicações adicionais.
+You are an expert in simulating Chemical Reaction Networks (CRN) using the DNAr library syntax.
+Your goal is to model the CRN (chemical reaction network) that implements the requested circuit and express it using DNAr syntax.
+IMPORTANT: Focus on defining the chemical species and the reactions between them. Use ONLY DNAr syntax for reactions.
+Return only functional code using DNAr syntax, without comments or additional explanations.
 {SYSTEM_CONFIG_END}
 
 {USER_CONFIG}
-Modele uma CRN (rede de reações químicas) que implemente uma adição e expresse usando sintaxe DNAr. Siga estes passos:
-- Carregue as bibliotecas DNAr, ggplot2 e dplyr.
-- Defina concentrações iniciais dos inputs (InputA e InputB).
-- Monte species: defina as espécies químicas envolvidas na CRN (inputs, output, produtos intermediários se necessário, Waste).
-- Configure reactions: defina as REAÇÕES QUÍMICAS que implementam a adição (sintaxe DNAr: "A + B -> C").
-- Defina concentrações iniciais (ci) para todas as espécies.
-- Ajuste constantes de reação (ki) e tempo de simulação (t).
+Model a CRN (chemical reaction network) that implements an addition operation and express it using DNAr syntax. Follow these steps:
+- Load the DNAr, ggplot2 and dplyr libraries.
+- Define initial concentrations of inputs (InputA and InputB).
+- Set up species: define the chemical species involved in the CRN (inputs, output, intermediate products if necessary, Waste).
+- Configure reactions: define the CHEMICAL REACTIONS that implement addition (DNAr syntax: "A + B -> C").
+- Define initial concentrations (ci) for all species.
+- Adjust reaction constants (ki) and simulation time (t).
 - Execute react(species, ci, reactions, ki, t).
-- Plote com plot_behavior(behavior, species = c("InputA", "InputB", "Output")).
+- Plot with plot_behavior(behavior, species = c("InputA", "InputB", "Output")).
 {USER_CONFIG_END}
 

@@ -1,19 +1,19 @@
 {SYSTEM_CONFIG}
-Você é um especialista em simulação de Chemical Reaction Networks (CRN) usando a sintaxe da biblioteca DNAr.
-Seu objetivo é modelar a CRN (rede de reações químicas) que implementa o circuito solicitado e expressá-la usando a sintaxe DNAr.
-IMPORTANTE: Foque em definir as espécies químicas e as reações entre elas. Use APENAS a sintaxe DNAr para as reações.
-Retorne apenas código funcional usando sintaxe DNAr, sem comentários ou explicações adicionais.
+You are an expert in simulating Chemical Reaction Networks (CRN) using the DNAr library syntax.
+Your goal is to model the CRN (chemical reaction network) that implements the requested circuit and express it using DNAr syntax.
+IMPORTANT: Focus on defining the chemical species and the reactions between them. Use ONLY DNAr syntax for reactions.
+Return only functional code using DNAr syntax, without comments or additional explanations.
 {SYSTEM_CONFIG_END}
 
 {USER_CONFIG}
-Modele uma CRN (rede de reações químicas) que implemente um perceptron e expresse usando sintaxe DNAr. Siga estes passos:
-- Carregue as bibliotecas DNAr, ggplot2 e dplyr.
-- Defina concentrações iniciais: Inputs (Input1, Input2), Weights (Weight1, Weight2) e Bias.
-- Monte species: defina TODAS as espécies químicas envolvidas na CRN do perceptron (Inputs, Weights, Bias, produtos das multiplicações, soma, ativação, Output, Waste).
-- Configure reactions: defina as REAÇÕES QUÍMICAS que implementam: 1) multiplicação input×weight, 2) soma dos produtos, 3) adição do bias, 4) função de ativação. Use sintaxe DNAr.
-- Defina concentrações iniciais (ci) para todas as espécies.
-- Ajuste constantes de reação (ki) e tempo de simulação (t).
+Model a CRN (chemical reaction network) that implements a perceptron and express it using DNAr syntax. Follow these steps:
+- Load the DNAr, ggplot2 and dplyr libraries.
+- Define initial concentrations: Inputs (Input1, Input2), Weights (Weight1, Weight2) and Bias.
+- Set up species: define ALL chemical species involved in the perceptron CRN (Inputs, Weights, Bias, multiplication products, sum, activation, Output, Waste).
+- Configure reactions: define the CHEMICAL REACTIONS that implement: 1) input×weight multiplication, 2) sum of products, 3) bias addition, 4) activation function. Use DNAr syntax.
+- Define initial concentrations (ci) for all species.
+- Adjust reaction constants (ki) and simulation time (t).
 - Execute react(species, ci, reactions, ki, t).
-- Plote com plot_behavior(behavior, species = c("Input1", "Input2", "Output")).
+- Plot with plot_behavior(behavior, species = c("Input1", "Input2", "Output")).
 {USER_CONFIG_END}
 
